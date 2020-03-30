@@ -1,11 +1,8 @@
-const regex = new RegExp(/^[🙃🙂🙃😆🙂]{5}$/u)
-import admin from "firebase-admin"
-import { adminConfig } from "../../shourl-firebase-key"
-admin.initializeApp({
-    credential: admin.credential.cert(adminConfig),
-    databaseURL: "https://shourl-62076.firebaseio.com",
-})
-const db = admin.firestore()
+import { REGEX_EMOJIS } from "../utils/constants"
+const regex = new RegExp(REGEX_EMOJIS, "u")
+import { db } from "../utils/admin"
+// google.com test combination -> 🙃🙂🙃😆🙂
+
 export async function get(req, res, next) {
     // the `slug` parameter is available because
     // this file is called [slug].json.js
