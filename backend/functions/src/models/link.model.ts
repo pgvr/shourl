@@ -1,4 +1,4 @@
 export interface Link {
-    id: string;
-    longUrl: string;
+    emojis: string
+    longUrl: string
 }
