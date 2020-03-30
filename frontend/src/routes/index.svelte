@@ -19,7 +19,7 @@
 </svelte:head>
 
 
-<h1 class="text-2xl md:text-6xl underline md:p8 p-4 text-center mb-4">Cooler Name!</h1>
+<h1 class="text-2xl md:text-6xl underline md:p8 p-4 text-center mb-4 text-red-500">Cooler Name!</h1>
 
 <form class="w-full max-w-ml" on:submit|preventDefault={submit}>
   <div class="flex items-center md:flex-row flex-col">
@@ -28,12 +28,20 @@
   </div>
 </form>
 
-<script>
+<div class="emoji-result">{emojis}</div>
+
+<script lang="typescript">
 let url = ""
-function submit(event) {
-	console.log(url)
-	// validate maybe
-	// send url to smiley encoder
-	// put in db
+let emojis = ""
+async function submit() {
+	const result = await fetch("/api/encode", {
+		method: "POST",  
+		headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({ longUrl: url })})
+	const resultJson = await result.json()
+	emojis = resultJson.emojis
 }
 </script>

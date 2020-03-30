@@ -1,24 +1,28 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import { Request, Response } from "express"
 import { db } from "../../utils/admin"
-import { EMOJIS, EMOJILENGTH, REGEX_URL } from "../../utils/constants"
+import { EMOJIS, EMOJI_LENGTH } from "../../utils/constants"
 
-export async function post(req, res, next) {
+export async function post(req: Request, res: Response) {
+    console.log(req.body)
     const { longUrl } = req.body
-    // regex for URL check
-    // const regexUrl = new RegExp(REGEX_URL)
 
     if (longUrl) {
         try {
+            console.log("putting in db")
             const emojis = await storeUrl(longUrl)
             return res.json({ emojis })
         } catch (error) {
-            return res.status(500)
+            console.log(error)
+            return res.sendStatus(500)
         }
     } else {
-        return res.status(400)
+        console.log("400")
+        return res.sendStatus(400)
     }
 }
 
-async function storeUrl(longUrl) {
+async function storeUrl(longUrl: string) {
     const emojiCombination = generateEmojiCombination()
     const link = {
         encodedEmojis: encodeURI(emojiCombination),
@@ -30,7 +34,7 @@ async function storeUrl(longUrl) {
 
 function generateEmojiCombination() {
     const emojis = []
-    for (let index = 0; index < EMOJILENGTH; index += 1) {
+    for (let index = 0; index < EMOJI_LENGTH; index += 1) {
         const emoji = getRandomEncodedEmoji()
         emojis.push(emoji)
     }

@@ -4,4 +4,4 @@
 yarn-error.log
 /cypress/screenshots/
 /__sapper__/
-shourl-firebase-key.js
+shourl-firebase-key.ts
