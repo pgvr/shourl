@@ -1,24 +1,15 @@
 <script>
     import Tailwindcss from "../components/Tailwindcss.svelte"
-    import Nav from "../components/Nav.svelte"
-
-    export let segment
+    // export let segment
 </script>
 
-<style>
+<style lang="postcss">
     main {
-        position: relative;
-        max-width: 56em;
-        background-color: white;
-        padding: 2em;
-        margin: 0 auto;
-        box-sizing: border-box;
+        @apply relative max-w-4xl bg-white p-8 mx-auto my-0;
     }
 </style>
 
 <Tailwindcss />
-
-<Nav {segment} />
 
 <main>
     <slot />
