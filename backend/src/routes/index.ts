@@ -1,10 +1,10 @@
 import express from "express"
-import encode from "./link/encode"
 import decode from "./link/decode"
+import encode from "./link/encode"
 
 const router = express.Router()
 
 router.use("/encode", encode)
-router.use("/decode", decode)
+router.use("/", decode)
 
 export default router

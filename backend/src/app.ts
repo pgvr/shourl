@@ -1,9 +1,10 @@
-import express, { Request, Response, NextFunction } from "express"
 import bodyParser from "body-parser"
 import cors from "cors"
-import Logger from "./core/Logger"
+import express, { NextFunction, Request, Response } from "express"
 import { corsUrl, environment } from "./config"
-import { NotFoundError, ApiError, InternalError } from "./core/ApiError"
+import { ApiError, InternalError, NotFoundError } from "./core/ApiError"
+import Logger from "./core/Logger"
+import "./database" // initialize database
 import routes from "./routes"
 
 process.on("uncaughtException", (e) => {
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true, parameterLimit: 5
 app.use(cors({ origin: corsUrl, optionsSuccessStatus: 200 }))
 
 // Routes
-app.use("/v1", routes)
+app.use("/", routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => next(new NotFoundError()))
@@ -25,6 +26,7 @@ app.use((req, res, next) => next(new NotFoundError()))
 // Middleware Error Handler
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    // This only runs when an error is found
     if (err instanceof ApiError) {
         return ApiError.handle(err, res)
     }
