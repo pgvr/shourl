@@ -11,7 +11,7 @@
         try {
             console.log(link)
             linkLoading.update(l => !l)
-            const res = await fetch("https://emoji-link-shortener.herokuapp.com/encode", {
+            const res = await fetch("https://emojilink.tk/encode", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -21,7 +21,7 @@
             })
             const body = await res.json()
             result = decodeURI(body.data.encodedEmojis)
-            link = "https://emoji-link-shortener.herokuapp.com/" + result
+            link = "https://emojilink.tk/" + result
             copyToClipboard(link)
         } catch (error) {
             console.log(error)

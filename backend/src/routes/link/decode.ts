@@ -21,7 +21,7 @@ router.get(
             Logger.info("No Link found for emojis")
         }
         // TODO: Redirect to our domain
-        return res.redirect("https://google.com")
+        return res.redirect("https://shourl.netlify.com/")
     }),
 )
 
