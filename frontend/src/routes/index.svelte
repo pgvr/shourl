@@ -74,7 +74,7 @@
         focus:outline-none focus:shadow-outline"
         bind:value={link}
         id="link"
-        type="text"
+        type="url"
         placeholder="heckinglongurl.com" />
 
     {#if result}
