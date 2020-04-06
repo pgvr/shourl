@@ -4,7 +4,8 @@
     "description": "An URL shortener using lots of emojis",
     "main": "index.js",
     "scripts": {
-        "start": "npm run serve",
+        "start": "npm run build && npm run serve",
+        "startHeroku": "node build/server.js",
         "serve": "node -r dotenv/config build/server.js",
         "build": "npm run build-ts",
         "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
