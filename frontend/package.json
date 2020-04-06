@@ -1,6 +1,6 @@
 {
-    "name": "TODO",
-    "description": "TODO",
+    "name": "emoji-link-shortener",
+    "description": "Emoji-Link-Shortener",
     "version": "0.0.1",
     "scripts": {
         "dev": "cross-env NODE_ENV=development sapper dev",
