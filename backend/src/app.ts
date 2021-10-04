@@ -1,7 +1,7 @@
 import bodyParser from "body-parser"
 import cors from "cors"
 import express, { NextFunction, Request, Response } from "express"
-import { corsUrl, environment } from "./config"
+import { environment } from "./config"
 import { ApiError, InternalError, NotFoundError } from "./core/ApiError"
 import Logger from "./core/Logger"
 import "./database" // initialize database
@@ -15,7 +15,7 @@ const app = express()
 
 app.use(bodyParser.json({ limit: "10mb" }))
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true, parameterLimit: 50000 }))
-app.use(cors({ origin: corsUrl, optionsSuccessStatus: 200 }))
+app.use(cors())
 
 // Routes
 app.use("/", routes)
