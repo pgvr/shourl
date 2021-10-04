@@ -19,9 +19,7 @@
         "sapper": "^0.27.0",
         "svelte": "^3.0.0",
         "svelte-preprocess": "^3.7.1",
-        "tailwindcss": "^1.2.0"
-    },
-    "devDependencies": {
+        "tailwindcss": "^1.2.0",
         "@babel/core": "^7.0.0",
         "@babel/plugin-syntax-dynamic-import": "^7.0.0",
         "@babel/plugin-transform-runtime": "^7.0.0",
